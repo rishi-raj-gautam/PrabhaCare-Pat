@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-import { DOCTORS, CALENDAR_DAYS } from '../data/mockData';
+import { DOCTORS } from '../data/mockData';
 
 export default function AppointmentBooking() {
   const { doctorId } = useParams();
@@ -11,11 +11,24 @@ export default function AppointmentBooking() {
   const doctor = doctors.find(d => d._id === doctorId) || doctors[0] || DOCTORS[0];
   const [step, setStep] = useState(0); // Always start at type selection
   const [type, setType] = useState('');
-  const [selectedDay, setSelectedDay] = useState(1);
+  const [selectedDay, setSelectedDay] = useState(0);
   const [selectedSlot, setSelectedSlot] = useState('');
   const [confirmed, setConfirmed] = useState(false);
   const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const dynamicCalendarDays = Array.from({ length: 14 }).map((_, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() + i);
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return {
+      dateObj: d,
+      name: dayNames[d.getDay()],
+      num: d.getDate(),
+      month: monthNames[d.getMonth()]
+    };
+  });
 
   const stepProgress = step === 0 ? '0%' : step === 1 ? '50%' : '100%';
 
@@ -25,9 +38,8 @@ export default function AppointmentBooking() {
     setIsSubmitting(true);
 
     try {
-      const day = CALENDAR_DAYS[selectedDay];
-      // Create a real Date for October 2026 (matching mock context)
-      const scheduledDate = new Date(2026, 9, day.num); // Month is 0-indexed, 9 = Oct
+      const day = dynamicCalendarDays[selectedDay];
+      const scheduledDate = new Date(day.dateObj);
       
       // Parse "09:00 AM" or "02:00 PM"
       const [time, modifier] = selectedSlot.split(' ');
@@ -42,7 +54,7 @@ export default function AppointmentBooking() {
       endTime.setHours(endTime.getHours() + 1); // Default 1 hour duration
 
       const res = await addAppointment({
-        doctorId: doctor._id,
+        doctorId: doctor._id || doctor.id,
         scheduledDate: scheduledDate.toISOString(),
         startTime: startTime.toISOString(),
         endTime: endTime.toISOString(),
@@ -187,7 +199,7 @@ export default function AppointmentBooking() {
 
                 {/* Calendar Strip */}
                 <div className="cp-calendar-strip cp-mb-8">
-                  {CALENDAR_DAYS.map((day, i) => (
+                  {dynamicCalendarDays.map((day, i) => (
                     <button
                       key={i}
                       className={`cp-cal-day ${selectedDay === i ? 'selected' : ''}`}
@@ -206,16 +218,15 @@ export default function AppointmentBooking() {
                     Morning Slots
                   </h4>
                   <div className="cp-slot-grid">
-                    {doctor.slots.morning.map((slot, i) => (
+                    {doctor.slots?.morning?.length > 0 ? doctor.slots.morning.map((slot, i) => (
                       <button
                         key={slot}
                         className={`cp-slot ${selectedSlot === slot ? 'selected' : ''}`}
-                        disabled={i === 2}
                         onClick={() => setSelectedSlot(slot)}
                       >
                         {slot}
                       </button>
-                    ))}
+                    )) : <div className="cp-muted cp-small">No morning slots available</div>}
                   </div>
                 </div>
 
@@ -226,7 +237,7 @@ export default function AppointmentBooking() {
                     Afternoon Slots
                   </h4>
                   <div className="cp-slot-grid">
-                    {doctor.slots.afternoon.map(slot => (
+                    {doctor.slots?.afternoon?.length > 0 ? doctor.slots.afternoon.map(slot => (
                       <button
                         key={slot}
                         className={`cp-slot ${selectedSlot === slot ? 'selected' : ''}`}
@@ -234,7 +245,7 @@ export default function AppointmentBooking() {
                       >
                         {slot}
                       </button>
-                    ))}
+                    )) : <div className="cp-muted cp-small">No afternoon slots available</div>}
                   </div>
                 </div>
 
@@ -249,7 +260,7 @@ export default function AppointmentBooking() {
                     <div>
                       <p style={{ fontSize: 11, color: 'var(--on-surface-variant)', fontWeight: 500, textTransform: 'uppercase' }}>Selection</p>
                       <p className="cp-bold cp-small">
-                        {type === 'in-person' ? 'In-Person' : 'Video Call'} • Oct {CALENDAR_DAYS[selectedDay].num}, {selectedSlot || '—'}
+                        {type === 'in-person' ? 'In-Person' : 'Video Call'} • {dynamicCalendarDays[selectedDay].month} {dynamicCalendarDays[selectedDay].num}, {selectedSlot || '—'}
                       </p>
                     </div>
                   </div>
@@ -292,7 +303,7 @@ export default function AppointmentBooking() {
                     </div>
                     <div className="cp-flex cp-justify-between">
                       <span className="cp-muted">Date</span>
-                      <span className="cp-bold">{CALENDAR_DAYS[selectedDay].name}, Oct {CALENDAR_DAYS[selectedDay].num}</span>
+                      <span className="cp-bold">{dynamicCalendarDays[selectedDay].name}, {dynamicCalendarDays[selectedDay].month} {dynamicCalendarDays[selectedDay].num}</span>
                     </div>
                     <div className="cp-flex cp-justify-between">
                       <span className="cp-muted">Time</span>

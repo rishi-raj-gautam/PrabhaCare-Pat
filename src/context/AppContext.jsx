@@ -60,7 +60,7 @@ export function AppProvider({ children }) {
   const [queueInfo, setQueueInfo] = useState(null);
   const [notifications] = useState([]);
   const [theme, setTheme] = useState(() => localStorage.getItem('cp_theme') || 'light');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(() => !!localStorage.getItem('cp_token'));
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);

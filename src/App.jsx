@@ -17,7 +17,8 @@ import Vitals from './pages/Vitals'
 import './App.css'
 
 function ProtectedRoute({ children }) {
-  const { isLoggedIn, profileComplete } = useApp();
+  const { isLoggedIn, profileComplete, isLoading } = useApp();
+  if (isLoading) return null;
   if (!isLoggedIn) return <Navigate to="/auth" replace />;
   if (!profileComplete) return <Navigate to="/profile-setup" replace />;
   return children;
