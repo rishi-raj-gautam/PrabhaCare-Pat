@@ -1,0 +1,232 @@
+export const DOCTORS = [
+  {
+    id: 'd1',
+    name: 'Dr. Arjun Malhotra',
+    specialty: 'Senior Cardiologist',
+    qualifications: 'MBBS, MD, DM',
+    rating: 4.9,
+    reviews: 1200,
+    experience: 18,
+    fee: 1500,
+    tags: ['Heart Surgery', 'Angioplasty', 'Hypertension'],
+    photo: '/doctors/doctor_male_1.png',
+    available: true,
+    availableText: 'Available Today',
+    hospital: 'Apollo Hospitals, Delhi',
+    bio: 'Dr. Arjun Malhotra is an internationally trained cardiologist with over 18 years of experience in interventional cardiology. He specializes in complex angioplasty procedures and has performed over 5,000 successful cardiac interventions.',
+    education: ['MBBS - AIIMS Delhi', 'MD Cardiology - PGI Chandigarh', 'DM Interventional - Mount Sinai, USA'],
+    slots: {
+      morning: ['09:00 AM', '09:30 AM', '10:30 AM', '11:00 AM'],
+      afternoon: ['02:00 PM', '02:30 PM', '03:30 PM', '04:00 PM'],
+    }
+  },
+  {
+    id: 'd2',
+    name: 'Dr. Priya Sharma',
+    specialty: 'Interventional Cardiologist',
+    qualifications: 'MD, DNB',
+    rating: 4.7,
+    reviews: 840,
+    experience: 12,
+    fee: 1200,
+    tags: ['Echocardiogram', 'Heart Failure'],
+    photo: '/doctors/doctor_female_1.png',
+    available: false,
+    availableText: 'Next: Tomorrow',
+    hospital: 'Fortis Heart Institute, Delhi',
+    bio: 'Dr. Priya Sharma is a leading interventional cardiologist specializing in echocardiography and heart failure management. She has been recognized for her patient-centric approach.',
+    education: ['MD - Lady Hardinge Medical College', 'DNB Cardiology - National Board'],
+    slots: {
+      morning: ['09:00 AM', '10:00 AM', '11:30 AM'],
+      afternoon: ['01:30 PM', '03:00 PM', '04:30 PM'],
+    }
+  },
+  {
+    id: 'd3',
+    name: 'Dr. Vikram Singhal',
+    specialty: 'Pediatric Cardiologist',
+    qualifications: 'MBBS, MD',
+    rating: 5.0,
+    reviews: 2400,
+    experience: 25,
+    fee: 2000,
+    tags: ['Child Heart Care', 'Congenital Issues'],
+    photo: '/doctors/doctor_male_2.png',
+    available: true,
+    availableText: 'Available Today',
+    hospital: 'Manipal Hospitals, Bengaluru',
+    bio: 'Dr. Vikram Singhal is one of India\'s most experienced pediatric cardiologists with 25 years of practice in managing congenital heart diseases in children.',
+    education: ['MBBS - KMC Manipal', 'MD Pediatrics - CMC Vellore', 'Fellowship - Great Ormond Street, London'],
+    slots: {
+      morning: ['08:30 AM', '09:30 AM', '10:30 AM', '11:30 AM'],
+      afternoon: ['02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM'],
+    }
+  },
+  {
+    id: 'd4',
+    name: 'Dr. Anjali Kapoor',
+    specialty: 'Dermatologist',
+    qualifications: 'MBBS, MD, FAAD',
+    rating: 4.8,
+    reviews: 960,
+    experience: 15,
+    fee: 800,
+    tags: ['Acne', 'Skin Allergy', 'Cosmetic Derma'],
+    photo: '/doctors/doctor_female_2.png',
+    available: true,
+    availableText: 'Available Today',
+    hospital: 'Max Hospital, Saket',
+    bio: 'Dr. Anjali Kapoor is a board-certified dermatologist with specialized training in cosmetic dermatology and skin allergy management.',
+    education: ['MBBS - Maulana Azad Medical College', 'MD Dermatology - AIIMS', 'FAAD - American Academy'],
+    slots: {
+      morning: ['10:00 AM', '10:30 AM', '11:00 AM'],
+      afternoon: ['02:30 PM', '03:30 PM', '04:30 PM', '05:30 PM'],
+    }
+  },
+  {
+    id: 'd5',
+    name: 'Dr. Rahul Mehra',
+    specialty: 'Neurologist',
+    qualifications: 'MBBS, DM',
+    rating: 4.6,
+    reviews: 520,
+    experience: 10,
+    fee: 1000,
+    tags: ['Migraine', 'Epilepsy', 'Stroke Care'],
+    photo: '/doctors/doctor_male_3.png',
+    available: false,
+    availableText: 'Next: Wed',
+    hospital: 'Sri Ganga Ram Hospital, Delhi',
+    bio: 'Dr. Rahul Mehra is a dynamic neurologist specializing in headache disorders, epilepsy management, and acute stroke intervention.',
+    education: ['MBBS - MAMC Delhi', 'DM Neurology - NIMHANS Bangalore'],
+    slots: {
+      morning: ['09:00 AM', '10:00 AM', '11:00 AM'],
+      afternoon: ['03:00 PM', '04:00 PM', '05:00 PM'],
+    }
+  },
+];
+
+export const SPECIALTIES = [
+  'Cardiologist', 'Dermatologist', 'Pediatrician', 'Neurologist',
+  'Orthopedic', 'ENT Specialist', 'Ophthalmologist', 'Psychiatrist'
+];
+
+export const MOCK_APPOINTMENTS = [
+  {
+    id: 'a1',
+    doctorId: 'd1',
+    doctorName: 'Dr. Arjun Malhotra',
+    doctorSpec: 'Senior Cardiologist',
+    hospital: 'Apollo Hospitals',
+    photo: '/doctors/doctor_male_1.png',
+    date: 'Today, 14 Oct',
+    time: '10:30 AM',
+    type: 'video',
+    status: 'upcoming',
+  },
+  {
+    id: 'a2',
+    doctorId: 'd4',
+    doctorName: 'Dr. Anjali Kapoor',
+    doctorSpec: 'Dermatologist',
+    hospital: 'Max Hospital, Saket',
+    photo: '/doctors/doctor_female_2.png',
+    date: 'Wed, 18 Oct',
+    time: '4:15 PM',
+    type: 'in-person',
+    status: 'upcoming',
+  },
+];
+
+export const MOCK_RECORDS = [
+  {
+    id: 'r1',
+    type: 'Lab Report',
+    typeColor: 'success',
+    title: 'Comprehensive Lipid Profile',
+    date: 'Oct 14, 2024',
+    provider: 'Apollo Diagnostics, Mumbai Central',
+    providerIcon: 'domain',
+    values: ['Cholesterol: 180 mg/dL', 'HDL: 54 mg/dL'],
+    icon: 'biotech',
+  },
+  {
+    id: 'r2',
+    type: 'Prescription',
+    typeColor: 'primary',
+    title: 'Follow-up: Seasonal Allergies',
+    date: 'Sep 28, 2024',
+    provider: 'Dr. Ananya Sharma • ENT Specialist',
+    providerIcon: 'person',
+    detail: 'Active course: 3 medications',
+    detailIcon: 'check_circle',
+    icon: 'prescriptions',
+  },
+  {
+    id: 'r3',
+    type: 'Consultation',
+    typeColor: 'neutral',
+    title: 'Annual Physical Examination',
+    date: 'Aug 12, 2024',
+    provider: 'Manipal Hospitals, Bengaluru',
+    providerIcon: 'domain',
+    notes: '"Patient shows excellent recovery in cardiovascular markers. Continue existing diet."',
+    icon: 'medical_services',
+    month: 'August',
+  },
+  {
+    id: 'r4',
+    type: 'Lab Report',
+    typeColor: 'success',
+    title: 'Complete Blood Count',
+    date: 'Jul 05, 2024',
+    provider: 'SRL Diagnostics, Delhi',
+    providerIcon: 'domain',
+    values: ['Hemoglobin: 14.2 g/dL', 'WBC: 6,800'],
+    icon: 'biotech',
+    month: 'July',
+  },
+];
+
+export const MOCK_NOTIFICATIONS = [
+  {
+    id: 'n1',
+    title: 'Medicine Reminder',
+    description: 'Take Atorvastatin (10mg) after lunch',
+    time: 'Due in 15 mins',
+    timeColor: 'var(--primary)',
+    barColor: 'primary',
+  },
+  {
+    id: 'n2',
+    title: 'Reports Ready',
+    description: 'Thyroid profile results are now available',
+    time: 'Just now',
+    timeColor: 'var(--tertiary-container)',
+    barColor: 'success',
+  },
+  {
+    id: 'n3',
+    title: 'Follow-up Reminder',
+    description: 'Schedule eye checkup for next week',
+    time: 'Tomorrow',
+    timeColor: 'var(--muted)',
+    barColor: 'muted',
+    dimmed: true,
+  },
+];
+
+export const MOCK_VITALS = [
+  { label: 'Heart Rate', value: '72 BPM', status: 'Normal', icon: 'favorite', variant: 'heart' },
+  { label: 'Blood Pressure', value: '120/80', status: 'Perfect', icon: 'water_drop', variant: 'bp' },
+];
+
+export const CALENDAR_DAYS = [
+  { name: 'Mon', num: 12 },
+  { name: 'Tue', num: 13, selected: true },
+  { name: 'Wed', num: 14 },
+  { name: 'Thu', num: 15 },
+  { name: 'Fri', num: 16 },
+  { name: 'Sat', num: 17 },
+  { name: 'Sun', num: 18 },
+];
