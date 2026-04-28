@@ -32,7 +32,7 @@ export default function ProfileSetup() {
           <div className="cp-brand-mark">
             <span className="material-symbols-outlined" style={{ fontSize: 18 }}>cardiology</span>
           </div>
-          Care OS
+          PrabhaCare
         </div>
 
         <h1 className="cp-auth-title">Complete Your Profile</h1>

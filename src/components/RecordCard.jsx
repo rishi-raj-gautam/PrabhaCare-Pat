@@ -1,6 +1,6 @@
 export default function RecordCard({ record, style, onView }) {
   const dateStr = record.createdAt ? new Date(record.createdAt).toLocaleDateString() : (record.date || '');
-  const provider = record.doctorId?.name || record.provider || 'CareOS Provider';
+  const provider = record.doctorId?.name || record.provider || 'PrabhaCare Provider';
   const typeLabel =
     record.type === 'PRESCRIPTION' ? 'Prescription' :
     record.type === 'LAB_REPORT' ? 'Lab Report' :

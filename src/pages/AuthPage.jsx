@@ -116,7 +116,7 @@ export default function AuthPage() {
           <div className="cp-brand-mark">
             <span className="material-symbols-outlined" style={{ fontSize: 18 }}>cardiology</span>
           </div>
-          Care OS Patient
+          PrabhaCare Patient
         </div>
 
         <h1 className="cp-auth-title">{isLogin ? "Welcome Back" : "Create Account"}</h1>
@@ -243,7 +243,7 @@ export default function AuthPage() {
             onClick={() => setIsLogin(!isLogin)}
             style={{ fontSize: 14, fontWeight: 600, border: '1px solid var(--outline-variant)' }}
           >
-            {isLogin ? "New to Care OS? Create an account" : "Already have an account? Sign In"}
+            {isLogin ? "New to PrabhaCare? Create an account" : "Already have an account? Sign In"}
           </button>
         </div>
 

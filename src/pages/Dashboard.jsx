@@ -35,7 +35,7 @@ export default function Dashboard() {
           </div>
           <div className="cp-appt-info">
             <h3>{doc.name || 'Doctor'}</h3>
-            <p>{doc.specialty || 'General'} • {doc.hospital || 'CareOS Hospital'}</p>
+            <p>{doc.specialty || 'General'} • {doc.hospital || 'PrabhaCare Hospital'}</p>
             <div className="cp-appt-tags">
               <span className="cp-pill">
                 <span className="material-symbols-outlined" style={{ fontSize: 14 }}>
@@ -181,7 +181,7 @@ export default function Dashboard() {
                     <span className="cp-muted cp-small">{new Date(rec.createdAt).toLocaleDateString()}</span>
                   </div>
                   <h4 style={{ fontWeight: 800, marginBottom: 4, color: 'var(--text-h)' }}>{rec.title}</h4>
-                  <p className="cp-muted cp-small cp-mb-4">{rec.doctorId?.name || 'CareOS Provider'}</p>
+                  <p className="cp-muted cp-small cp-mb-4">{rec.doctorId?.name || 'PrabhaCare Provider'}</p>
                   <div className="cp-flex cp-justify-between cp-items-center">
                     <span className="cp-tag cp-tag--lg cp-tag--primary">{rec.type}</span>
                     <span className="material-symbols-outlined" style={{ color: 'var(--on-surface-variant)' }}>chevron_right</span>

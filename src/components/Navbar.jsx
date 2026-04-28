@@ -12,7 +12,7 @@ export default function Navbar() {
           <div className="cp-brand-mark">
             <span className="material-symbols-outlined" style={{ fontSize: 18 }}>cardiology</span>
           </div>
-          Care OS
+          PrabhaCare
         </NavLink>
 
         <div className="cp-nav-links">

@@ -111,7 +111,7 @@ export default function AppointmentHistory() {
                         {isVideo ? 'Video' : 'In-Person'}
                       </span>
                     </div>
-                    <p className="cp-muted cp-small" style={{ marginBottom: 4 }}>{doc.specialty} • {doc.hospital || 'CareOS Hospital'}</p>
+                    <p className="cp-muted cp-small" style={{ marginBottom: 4 }}>{doc.specialty} • {doc.hospital || 'PrabhaCare Hospital'}</p>
                     <p className="cp-muted cp-small">
                       <span className="material-symbols-outlined" style={{ fontSize: 14, verticalAlign: 'middle', marginRight: 4 }}>schedule</span>
                       {dateStr} at {timeStr}

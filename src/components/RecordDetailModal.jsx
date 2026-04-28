@@ -11,7 +11,7 @@ export default function RecordDetailModal({ record, onClose }) {
   if (!record) return null;
 
   const dateStr = record.createdAt ? new Date(record.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
-  const doctor = record.doctorId?.name || 'CareOS Provider';
+  const doctor = record.doctorId?.name || 'PrabhaCare Provider';
   const medicines = record.payload?.medicines || [];
   const diagnoses = record.payload?.diagnoses || [];
   const notes = record.payload?.notes || '';
