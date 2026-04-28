@@ -30,12 +30,9 @@ export default function AuthPage() {
     }
   }, [isLoggedIn, profileComplete, navigate]);
 
-  // Set default values when toggling for convenience during login
+  // Reset fields when toggling
   useEffect(() => {
-    if (isLogin) {
-      setEmail('patient@healthos.com');
-      setPassword('password123');
-    } else {
+    if (!isLogin) {
       setEmail('');
       setPassword('');
       setName('');
